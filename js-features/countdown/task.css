@@ -1,0 +1,6 @@
+.card.count-down {
+  width: 100%;
+  margin: 0 0 16px 0;
+  display: flex;
+  justify-content: center;
+}
