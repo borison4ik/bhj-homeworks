@@ -28,8 +28,6 @@ class ClickerCouner {
         this.speedClickPerSecond = 1 / ((new Date().getTime() - this.lastClickTime) / 1000);
         this.speedCounterEl.textContent = this.speedClickPerSecond.toFixed(2);
       }
-
-      console.log(new Date().getTime() - this.lastClickTime);
       this.lastClickTime = new Date().getTime();
     };
   }
