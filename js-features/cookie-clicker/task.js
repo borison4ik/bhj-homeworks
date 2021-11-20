@@ -1,9 +1,9 @@
 'use strict';
 class ClickerCouner {
   constructor(targetId, clickCounterId, speedCounterId) {
-    this.target = document.getElementById(`${targetId}`);
-    this.clickCounterEl = document.getElementById(`${clickCounterId}`);
-    this.speedCounterEl = document.getElementById(`${speedCounterId}`);
+    this.target = document.getElementById(targetId);
+    this.clickCounterEl = document.getElementById(clickCounterId);
+    this.speedCounterEl = document.getElementById(speedCounterId);
     this.clicked = false;
     this.lastClickTime = 0;
     this.clickCount = 0;
