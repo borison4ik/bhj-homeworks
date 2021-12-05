@@ -36,7 +36,7 @@ function onChangeColor(el, color) {
 }
 
 function getSpeed(el) {
-  return Number.parseInt(el.dataset.speed) && Math.floor(1 + Math.random() * 20) * 100;
+  return Number.parseInt(el.dataset.speed) || Math.floor(1 + Math.random() * 20) * 100;
 }
 
 function getColor(el) {
