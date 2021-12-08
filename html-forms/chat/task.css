@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
 .chat-widget {
   position: fixed;
   bottom: 0;
@@ -35,8 +40,8 @@
   height: 250px;
   background: red;
   border-radius: 20px 0 0 0;
+  cursor: pointer;
 }
-
 
 .message {
   margin-bottom: 10px;
@@ -59,7 +64,7 @@
 }
 .message_client .message__time {
   order: 2;
-  margin-right: 0;;
+  margin-right: 0;
   margin-left: 5px;
 }
 .message__text {
