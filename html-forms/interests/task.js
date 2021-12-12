@@ -32,21 +32,38 @@ function load() {
   }
 
   function checkParent(target) {
-    let status = true;
-    const section = target.closest('ul').closest('li');
-    const sectionUl = section && [...section.querySelectorAll('ul>li')];
+    let checkedElements = 0;
 
-    sectionUl &&
-      sectionUl.forEach((li) => {
-        const input = li.querySelector('input[type="checkbox"]');
+    const tagretParentCheckbox = target
+      ?.closest('li')
+      ?.closest('ul')
+      ?.previousElementSibling?.querySelector('label>input[type="checkbox"]');
 
-        if (!input.checked) {
-          status = false;
-        }
-      });
+    if (tagretParentCheckbox) {
+      const targetSiblingsCheckboxes = [
+        ...tagretParentCheckbox?.parentElement?.nextElementSibling?.children,
+      ];
 
-    if (section) {
-      section.querySelector('input[type="checkbox"]').checked = status;
+      if (tagretParentCheckbox) {
+        targetSiblingsCheckboxes.forEach((liElement) => {
+          if (liElement?.querySelector('label').querySelector('input[type="checkbox"]').checked) {
+            checkedElements += 1;
+          }
+        });
+      }
+
+      if (checkedElements === 0) {
+        tagretParentCheckbox.checked = false;
+        tagretParentCheckbox.indeterminate = false;
+      } else if (checkedElements === targetSiblingsCheckboxes.length) {
+        tagretParentCheckbox.indeterminate = false;
+        tagretParentCheckbox.checked = true;
+      } else if (checkedElements < targetSiblingsCheckboxes.length) {
+        tagretParentCheckbox.indeterminate = true;
+        tagretParentCheckbox.checked = false;
+      }
+
+      checkParent(tagretParentCheckbox);
     }
   }
 }
