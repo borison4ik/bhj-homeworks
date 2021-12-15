@@ -69,6 +69,13 @@ tasksEl.addEventListener('click', (evt) => {
   }
 });
 
+tasksEl.addEventListener('keyup', (evt) => {
+  evt.preventDefault();
+  if (todoInput.value.trim() != 0 && evt.key === 'Enter') {
+    addTask({ text: todoInput.value });
+  }
+});
+
 updateTasks();
 
 function removeTask(taskId) {
