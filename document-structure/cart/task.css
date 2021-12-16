@@ -1,15 +1,39 @@
 body {
   font-family: Arial;
 }
+
+.cart {
+  position: fixed;
+  right: 16px;
+  border: 1px solid #c3c3c3;
+  border-radius: 8px;
+  padding: 16px;
+}
+.cart__title {
+  margin: 0 0 16px 0;
+}
 .cart__products {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .cart__product {
   position: relative;
 }
+.cart__product-dell {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #ff0000;
+}
+
 .cart__product-count {
   position: absolute;
   top: 0;
