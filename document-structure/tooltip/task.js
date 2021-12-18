@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', load);
 
 function load() {
   const tooltip = createTooltip();
+  let activeTarget;
   document.body.insertAdjacentElement('beforeend', tooltip);
 
   document.addEventListener('click', (evt) => {
@@ -38,10 +39,15 @@ function load() {
       tooltip.style.left = left - width - 15 + 'px';
     }
 
-    if (tooltip.classList.contains('tooltip_active')) {
+    if (!activeTarget) {
+      activeTarget = target;
+    }
+
+    if (activeTarget === target && tooltip.classList.contains('tooltip_active')) {
       tooltip.classList.remove('tooltip_active');
     } else {
       tooltip.classList.add('tooltip_active');
+      activeTarget = target;
     }
   }
 
