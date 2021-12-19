@@ -99,6 +99,8 @@ function animateAddToCatr(productObj, animationCalback) {
   let fromTop = img.getBoundingClientRect().top;
   let fromLeft = img.getBoundingClientRect().left;
 
+  cloneImg.style.position = 'absolute';
+  cloneImg.style.zIndex = '9999';
   document.body.appendChild(cloneImg);
 
   const productCartEl = cartProductsEl.querySelector(`.cart__product[data-id="${id}"]`);
@@ -120,8 +122,6 @@ function animateAddToCatr(productObj, animationCalback) {
 
   let diffTop = toTop - fromTop;
   let diffLeft = toLeft - fromLeft;
-  cloneImg.style.position = 'absolute';
-  cloneImg.style.zIndex = '9999';
 
   const animTimer = setInterval(() => {
     const timeDuration = Date.now() - startTime;
