@@ -12,27 +12,47 @@ function load() {
     evt.preventDefault();
     const data = new FormData();
     data.append('file', input.files[0]);
+
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php', true);
     xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-    xhr.send(data);
+
+    xhr.onloadend = function () {
+      if (xhr.status == 200) {
+        console.log('xhr.onloadend - Сервер вернул 200');
+      } else {
+        console.log('Ошибка ' + this.status);
+      }
+    };
+
     xhr.upload.onloadstart = function (e) {
+      console.log('onloadstart - старт загрузки');
       progress.value = 0;
       progress.max = e.total;
     };
+
     xhr.upload.onprogress = function (e) {
-      console.log(e.loaded);
+      console.log('загружено - ', e.loaded);
       progress.value = e.loaded;
       progress.max = e.total;
     };
-    xhr.onload = function (e) {
+
+    xhr.upload.onload = function (e) {
       form.reset();
       progress.value = 0;
-      fileDesc.textContent = '';
-      console.log('загружен');
+      fileDesc.textContent = 'Имя файла...';
+      console.log('load - загружен');
+      console.log('=== Очистка формы ===');
     };
-    xhr.onerror = function (e) {
+
+    xhr.upload.onloadend = function (e) {
+      console.log('loadend - конец загрузки успешной или нет');
+    };
+
+    xhr.upload.onerror = function (e) {
       console.log('ошибка загрузки');
     };
+
+    xhr.send(data);
   });
 }
