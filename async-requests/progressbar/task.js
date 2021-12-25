@@ -17,14 +17,6 @@ function load() {
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php', true);
     xhr.setRequestHeader('Content-Type', 'multipart/form-data');
 
-    xhr.onloadend = function () {
-      if (xhr.status == 200) {
-        console.log('xhr.onloadend - Сервер вернул 200');
-      } else {
-        console.log('Ошибка ' + this.status);
-      }
-    };
-
     xhr.upload.onloadstart = function (e) {
       console.log('onloadstart - старт загрузки');
       progress.value = 0;
